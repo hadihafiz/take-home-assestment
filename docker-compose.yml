@@ -1,0 +1,28 @@
+version: "3"
+services:
+  producer:
+    build:
+      context: .
+      dockerfile: Dockerfile.producer
+    ports:
+      - "8000:8000"
+    depends_on:
+      - queue
+    environment:
+      - RABBITMQ_HOST=queue
+  consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile.consumer
+    depends_on:
+      - queue
+    environment:
+      - RABBITMQ_HOST=queue
+      - OUTPUT_FILE=/data/output.csv
+    volumes:
+      - ./data:/data
+  queue:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
