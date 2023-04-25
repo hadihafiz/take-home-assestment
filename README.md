@@ -8,11 +8,11 @@ To run the service, first make sure that you have Docker and Docker Compose inst
 
 1. Clone the repository:
    ```
-   $ git clone https://github.com/<your_username>/multi-container-service.git
+   $ git clone https://github.com/hadihafiz/take-home-assestment.git
    ```
 2. Navigate to the project directory:
    ```
-   $ cd multi-container-service
+   $ cd take-home-assestment
    ```
 3. Build the Docker images:
    ```
@@ -52,17 +52,6 @@ To run the service, first make sure that you have Docker and Docker Compose inst
    ```
 6. The output CSV file will be generated in the output directory of the consumer container. You can copy it to your local machine using the docker cp command:
    ```
-   $ docker cp multi-container-service_consumer_1:/output/predictions.csv ./predictions.csv
+   $ docker cp take-home-assestment_consumer_1:/output/predictions.csv ./predictions.csv
    ```
-
-### Configuration
-The service can be configured using environment variables. The following variables are available:
-
-- PRODUCER_HOST: The hostname of the producer container. Default is producer.
-- PRODUCER_PORT: The port number of the producer container. Default is 8000.
-- RABBITMQ_HOST: The hostname of the RabbitMQ container. Default is rabbitmq.
-- RABBITMQ_PORT: The port number of the RabbitMQ container. Default is 5672.
-- RABBITMQ_QUEUE: The name of the RabbitMQ queue. Default is predictions.
-- OUTPUT_FILE: The name of the output CSV file. Default is predictions.csv.
-
 You can set these variables in the docker-compose.yml file or in a .env file in the project directory.
